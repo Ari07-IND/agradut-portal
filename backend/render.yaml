@@ -1,0 +1,22 @@
+# render.yaml — Deploy the Agradut backend to Render.com
+# Place this in the root of the backend/ folder when pushing to GitHub
+
+services:
+  - type: web
+    name: agradut-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false   # Set this manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false   # Set this manually in Render dashboard
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
