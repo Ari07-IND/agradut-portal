@@ -1,20 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    },
-    {
-      "src": "api/index.cjs",
-      "use": "@vercel/node"
+  "functions": {
+    "api/index.cjs": {
+      "runtime": "vercel-node@latest"
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "api/index.cjs"
+      "destination": "/api/index.cjs"
     },
     {
       "source": "/(.*)",
